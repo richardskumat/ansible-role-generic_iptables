@@ -1,0 +1,15 @@
+---
+# try to avoid ufw
+- name: Save iptables v4 rules
+  shell: "iptables-save > /etc/iptables/rules.v4"
+  listen: "save iptables"
+
+- name: Save iptables v6 rules
+  shell: "ip6tables-save > /etc/iptables/rules.v6"
+  listen: "save iptables"
+
+- name: enable netfilter-persistent
+  service:
+   name: netfilter-persistent   
+   state: restarted
+   enabled: yes

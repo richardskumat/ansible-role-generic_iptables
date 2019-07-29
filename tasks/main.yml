@@ -1,0 +1,16 @@
+---
+
+- name: Include overrides specific to Debian 9.
+  include_tasks: "{{ ansible_distribution }}-{{ansible_distribution_major_version }}.yml"
+  when:
+    - ansible_distribution == 'Debian'
+    - ansible_distribution_major_version == "9"
+
+# haven't used Debian 10 yet on any device so this is all guesswork
+# https://wiki.debian.org/nftables
+# also worth reading when I'll have the time
+- name: Include overrides specific to Debian 10.
+  include_tasks: "{{ ansible_distribution }}-{{ansible_distribution_major_version }}.yml"
+  when:
+    - ansible_distribution == 'Debian'
+    - ansible_distribution_major_version == "10"
